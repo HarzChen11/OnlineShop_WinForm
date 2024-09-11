@@ -78,12 +78,20 @@ namespace OnlineShop.Forms
             else
             {
                 ProductModel model = new ProductModel();
+<<<<<<< HEAD
                 model.ProducId = product.ProductID;
+=======
+                model.Id = product.ProductID;
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
                 model.name = product.ProductName;
                 model.price = product.ProductPrice;
                 model.count = 1;
                 model.img = product.ProductImg;
+<<<<<<< HEAD
                 CarService.AddToCar(CartAction.Button,model);
+=======
+                CartService.AddToCar(CartAction.Button,model);
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             }
         }
 

@@ -1,16 +1,24 @@
 ﻿using OnlineShop.Models;
 using OnlineShop.Models.Entities;
+<<<<<<< HEAD
 using OnlineShop.Services;
+=======
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+using System.Windows.Forms;
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 
 namespace OnlineShop.Repository
 {
     internal class OrderRepository
     {
+<<<<<<< HEAD
         public static void CreatOrder(OrderModel orderModel)
         {
             DataBase data = new DataBase();
@@ -171,6 +179,37 @@ namespace OnlineShop.Repository
             DataBase data = new DataBase();
             var order = data.Order.Where(x => x.OrderID == OrderId).FirstOrDefault();
             return (int)order.LockPoint;
+=======
+        public static void CreatOrder(string UserID,List<ProductModel> products)
+        {
+           
+            DataBase data = new DataBase();
+            Guid cusID = Guid.Parse(UserID);
+            var addDetail = data.Order.FirstOrDefault(x => x.CustomerID == cusID);
+            if (products.Count >= 1)
+            {
+                OrderDetails detail = new OrderDetails();
+                detail.OrderDetailsID = Guid.NewGuid();
+                detail.OrderID = addDetail.OrderID;
+                for (int i = 0; i < products.Count(); i++)
+                {
+                    detail.ProductID = products[i].Id;
+                    detail.ProductColor = "隨機";
+                    detail.ProductSpec = "正常";
+                    detail.ProductQuantity = products[i].count;
+                    detail.Price = products[i].price;
+                }
+                data.OrderDetails.Add(detail);
+
+                int res = data.SaveChanges();
+                if (res != 0)
+                {
+                    MessageBox.Show("結帳成功");
+                }
+            }
+
+
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         }
     }
 }

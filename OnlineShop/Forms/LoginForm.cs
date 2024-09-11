@@ -29,7 +29,11 @@ namespace OnlineShop.Forms
                 string account = textBox1.Text;
                 string password = textBox2.Text;
 
+<<<<<<< HEAD
                 var user = data.Customer.FirstOrDefault(x => x.Phone == account);
+=======
+                var user = data.Customer.FirstOrDefault(x => x.Email == account);
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
                 if (user != null)
                 {
                     if(user.Password == password)

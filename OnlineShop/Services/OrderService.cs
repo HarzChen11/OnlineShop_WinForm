@@ -6,11 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+using System.Windows;
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 
 namespace OnlineShop.Services
 {
     internal class OrderService
     {
+<<<<<<< HEAD
         public static void CreatOrder(OrderModel orderModel)
         {
             OrderRepository.CreatOrder(orderModel);
@@ -50,6 +55,11 @@ namespace OnlineShop.Services
         {
              int LockPoint = OrderRepository.FindLockPoint(OrderId);
             return LockPoint;
+=======
+        public static void ServiceCreatOrder()
+        {
+            OrderRepository.CreatOrder(LoginState.CustomerID,CartService.getList());
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         }
     }
 }

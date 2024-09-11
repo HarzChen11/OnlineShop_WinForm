@@ -8,12 +8,15 @@ namespace OnlineShop.Models.Entities
 
     public partial class OrderDetails
     {
+<<<<<<< HEAD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OrderDetails()
         {
             PointsSystem = new HashSet<PointsSystem>();
         }
 
+=======
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         public Guid OrderDetailsID { get; set; }
 
         public Guid OrderID { get; set; }
@@ -35,8 +38,11 @@ namespace OnlineShop.Models.Entities
         public virtual Order Order { get; set; }
 
         public virtual Product Product { get; set; }
+<<<<<<< HEAD
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PointsSystem> PointsSystem { get; set; }
+=======
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
     }
 }

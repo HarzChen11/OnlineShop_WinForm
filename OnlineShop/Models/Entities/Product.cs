@@ -37,8 +37,11 @@ namespace OnlineShop.Models.Entities
 
         public int ProductQuantity { get; set; }
 
+<<<<<<< HEAD
         public int? ProductSafeQuantity { get; set; }
 
+=======
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
 

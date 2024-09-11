@@ -31,11 +31,18 @@ namespace OnlineShop
             products = data.Product.ToList();
             pagenation1.TotalCount = products.Count;
             pagenation1.ChangedPage += ChangePageClick;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             //products = data.Product.ToList();
             var list = products.Take(6).ToList();
             creatProduct(list);
 
+<<<<<<< HEAD
+=======
+          
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         }
 
 

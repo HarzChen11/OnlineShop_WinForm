@@ -27,7 +27,11 @@ namespace OnlineShop.Models.Entities
         [StringLength(3)]
         public string PaymentStatus { get; set; }
 
+<<<<<<< HEAD
         public Guid? Deliver { get; set; }
+=======
+        public Guid Deliver { get; set; }
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 
         [Required]
         [StringLength(5)]
@@ -39,6 +43,7 @@ namespace OnlineShop.Models.Entities
 
         public Guid TrolleyID { get; set; }
 
+<<<<<<< HEAD
         public int? LockPoint { get; set; }
 
         [StringLength(20)]
@@ -46,6 +51,9 @@ namespace OnlineShop.Models.Entities
 
         [StringLength(20)]
         public string InvoiceDate { get; set; }
+=======
+        public virtual Customer Customer { get; set; }
+>>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 
         public virtual Deliver Deliver1 { get; set; }
 
