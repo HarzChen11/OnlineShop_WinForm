@@ -63,15 +63,8 @@ namespace OnlineShop.Repository
             }
 
             var order = data.Order.Where(x => x.CustomerID == CustomerId && x.OrderID == OrderModel.OrderId).FirstOrDefault();
-            order.LockPoint = Discount;
             data.SaveChanges();
             return LockPoints;
-        }
-
-        public static void UpdatePoint(Guid CustomerId, int Price)
-        {
-            DataBase data = new DataBase();
-            int Points = data.PointsSystem.Where(x => x.CustomerID == CustomerId && x.Used == true).Sum(x => x.Point);
         }
 
         // 計算能折抵的點數
@@ -117,13 +110,16 @@ namespace OnlineShop.Repository
                 item.ExpireTime = null;
             }
             PointsSystem point = PointFactory.CreatPoint(OrderID, false, "已扣除", "退貨扣除",null, -deduct, 1, 1,null);
+            data.PointsSystem.Add(point);
 
             // 要補上退貨該筆訂單總點數扣除退貨後剩餘的點數
             int Remaining = total - deduct;
-            PointsSystem RemainingPoint = PointFactory.CreatPoint(OrderID, true, "未使用", "補回剩餘點數", null, Remaining, 1, 1);
-
+            if (Remaining != 0)
+            {
+                PointsSystem RemainingPoint = PointFactory.CreatPoint(OrderID, true, "未使用", "補回剩餘點數", null, Remaining, 1, 1);
+                data.PointsSystem.Add(RemainingPoint);
+            }
             
-
             // 補回上筆消費扣除的
             int LockPoint = OrderService.FindLockPoint(OrderID);
             if (LockPoint != 0)
@@ -132,17 +128,21 @@ namespace OnlineShop.Repository
                 data.PointsSystem.Add(RepairPoint);
             }
 
-            data.PointsSystem.Add(point);
-            data.PointsSystem.Add(RemainingPoint);
             data.SaveChanges();
-
-
         }
-        public static int FindGetPoint(Guid OrderId)
+
+        // 更改點數狀態
+        public static void ChangePointStatus(Guid CustomerID)
         {
             DataBase data = new DataBase();
-            var point = data.PointsSystem.Where(x => x.OrderID == OrderId).FirstOrDefault();
-            return (int)point.Point;
+            var LockPoints = data.PointsSystem.Where(x => x.CustomerID == CustomerID && x.Status == "已鎖定").ToList();
+            foreach (var point in LockPoints)
+            {
+                point.Status = "已使用";
+                point.Used = false;
+                point.Point = -point.Point;
+            }
+            data.SaveChanges();
         }
     }
 }

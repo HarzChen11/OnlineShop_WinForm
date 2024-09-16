@@ -17,10 +17,6 @@ namespace OnlineShop.Components.ShopCarComponent
     public partial class ProductInCar : UserControl
     {
         ProductModel models;
-<<<<<<< HEAD
-=======
-        CartService service = new CartService();
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         bool firstInit = true;
         public ProductInCar(ProductModel models)
         {
@@ -37,11 +33,7 @@ namespace OnlineShop.Components.ShopCarComponent
         private void delet_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-<<<<<<< HEAD
             CarService.RemoveCar(models);
-=======
-            service.RemoveCar(models);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         }
 
         private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
@@ -49,20 +41,12 @@ namespace OnlineShop.Components.ShopCarComponent
             if(firstInit == false)
             {
                 models.count = (int)numericUpDown1.Value;
-<<<<<<< HEAD
                 CarService.AddToCar(CartAction.NumberUpDown, models);
-=======
-                CartService.AddToCar(CartAction.NumberUpDown, models);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 
                 if ((int)numericUpDown1.Value == 0)
                 {
                     EventHandlers.RanderCar();
-<<<<<<< HEAD
                     CarService.RemoveCar(models);
-=======
-                    service.RemoveCar(models);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
                 }
             }
         }

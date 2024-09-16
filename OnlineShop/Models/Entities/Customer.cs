@@ -12,10 +12,6 @@ namespace OnlineShop.Models.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-<<<<<<< HEAD
-=======
-            Order = new HashSet<Order>();
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             Trolley = new HashSet<Trolley>();
         }
 
@@ -43,12 +39,7 @@ namespace OnlineShop.Models.Entities
         [StringLength(30)]
         public string Address { get; set; }
 
-<<<<<<< HEAD
         public bool? IsActive { get; set; }
-=======
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Trolley> Trolley { get; set; }

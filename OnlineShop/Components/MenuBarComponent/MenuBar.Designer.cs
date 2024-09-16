@@ -31,26 +31,19 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-<<<<<<< HEAD
             this.ProductLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.PointLabel = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.HistoryBT = new System.Windows.Forms.Button();
-=======
             this.label1 = new System.Windows.Forms.Label();
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-<<<<<<< HEAD
-            this.button1.Location = new System.Drawing.Point(451, 12);
-=======
-            this.button1.Location = new System.Drawing.Point(60, 10);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
+            this.button1.Location = new System.Drawing.Point(486, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 0;
@@ -62,11 +55,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-<<<<<<< HEAD
-            this.button2.Location = new System.Drawing.Point(532, 12);
-=======
-            this.button2.Location = new System.Drawing.Point(141, 10);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
+            this.button2.Location = new System.Drawing.Point(648, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 33);
             this.button2.TabIndex = 1;
@@ -77,11 +66,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-<<<<<<< HEAD
-            this.button3.Location = new System.Drawing.Point(612, 12);
-=======
-            this.button3.Location = new System.Drawing.Point(221, 10);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
+            this.button3.Location = new System.Drawing.Point(729, 16);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 33);
             this.button3.TabIndex = 2;
@@ -89,7 +74,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Register_Click);
             // 
-<<<<<<< HEAD
             // ProductLabel
             // 
             this.ProductLabel.AutoSize = true;
@@ -137,7 +121,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button4.Location = new System.Drawing.Point(110, 12);
+            this.button4.Location = new System.Drawing.Point(150, 12);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 33);
             this.button4.TabIndex = 7;
@@ -149,7 +133,7 @@
             // HistoryBT
             // 
             this.HistoryBT.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.HistoryBT.Location = new System.Drawing.Point(191, 12);
+            this.HistoryBT.Location = new System.Drawing.Point(567, 16);
             this.HistoryBT.Name = "HistoryBT";
             this.HistoryBT.Size = new System.Drawing.Size(75, 33);
             this.HistoryBT.TabIndex = 8;
@@ -157,7 +141,7 @@
             this.HistoryBT.UseVisualStyleBackColor = true;
             this.HistoryBT.Visible = false;
             this.HistoryBT.Click += new System.EventHandler(this.HistoryBT_Click);
-=======
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -168,31 +152,22 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "0";
             this.label1.Visible = false;
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             // 
             // MenuBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
             this.Controls.Add(this.HistoryBT);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.PointLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ProductLabel);
-=======
-            this.Controls.Add(this.label1);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "MenuBar";
-<<<<<<< HEAD
-            this.Size = new System.Drawing.Size(704, 55);
-=======
-            this.Size = new System.Drawing.Size(300, 55);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
+            this.Size = new System.Drawing.Size(852, 55);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,15 +178,12 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button button3;
-<<<<<<< HEAD
         public System.Windows.Forms.Label ProductLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label PointLabel;
         public System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button HistoryBT;
-=======
         public System.Windows.Forms.Label label1;
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
     }
 }

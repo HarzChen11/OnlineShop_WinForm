@@ -32,7 +32,7 @@ namespace OnlineShop.Components
                 
             }
 
-            this.Total_Lb.Text = (total- int.Parse(boughtOrder.Discount)).ToString();
+            this.Total_Lb.Text = (total- boughtOrder.Discount).ToString();
         }
 
 

@@ -13,8 +13,7 @@ namespace OnlineShop.Models
         public string OrderNumber { get; set; }
         public string InvoiceNo { get; set; }
         public string CreatTime { get; set; }
-        public string Discount { get; set; }
-        public string total { get; set; }
+        public int Discount { get; set; }
         public List<ProductModel> Details { get; set; }
 
         public BoughtOrderModel()

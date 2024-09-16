@@ -7,11 +7,12 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 
+
 namespace OnlineShop.Utility
 {
     public class MailService
     {
-        private static void mailInfo(string htmlTemplate, string subject, string customerMail)
+        private static void MailInfo(string htmlTemplate, string subject, string customerMail)
         {
             // 使用 Google Mail Server 發信
             string GoogleID = "qwe07081259@gmail.com"; //Google 發信帳號
@@ -35,7 +36,7 @@ namespace OnlineShop.Utility
             }
         }
 
-        public static void mailInfo(string htmlTemplate, string subject, List<string> Emails)
+        public static void MailInfo(string htmlTemplate, string subject, List<string> Emails)
         {
             // 使用 Google Mail Server 發信
             string GoogleID = "qwe07081259@gmail.com"; //Google 發信帳號
@@ -68,18 +69,15 @@ namespace OnlineShop.Utility
             htmlTemplate = htmlTemplate.Replace("{InvoiceUrl}", InvoiceUrl);
             htmlTemplate = htmlTemplate.Replace("{OrderId}", OrderModel.OrderId.ToString());
 
-            mailInfo(htmlTemplate, "發票開立通知", CustomerMail);
+            MailInfo(htmlTemplate, "發票開立通知", CustomerMail);
         }
 
         public static void SendNumberMail(string CustomerMail, string password)
         {
-
             string htmlTemplate = MailTemplates.pickUpMail;
             htmlTemplate = htmlTemplate.Replace("{OrderId}", password);
 
-            mailInfo(htmlTemplate, "驗證碼認證", CustomerMail);
-
-
+            MailInfo(htmlTemplate, "驗證碼認證", CustomerMail);
         }
 
         public static void SendPickUpMail(Dictionary<string, string> orderInfo)
@@ -92,8 +90,9 @@ namespace OnlineShop.Utility
 
             htmlTemplate = htmlTemplate.Replace("{OrderId}", orderId.ToString());
 
-
-            mailInfo(htmlTemplate, "到貨通知", cus.Email);
+            MailInfo(htmlTemplate, "到貨通知", cus.Email);
         }
+
+       
     }
 }

@@ -88,8 +88,6 @@ namespace OnlineShop.Forms
             return total;
         }
 
-
-
         public void LoadData(string orderNumber)
         {
             list = OrderService.GetBoughtListByUser(Guid.Parse(LoginState.CustomerID), orderNumber);

@@ -81,7 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Models\emailModel.cs" />
     <Compile Include="LogisticsControl.cs">
       <SubType>Form</SubType>
     </Compile>

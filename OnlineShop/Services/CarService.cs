@@ -14,10 +14,7 @@ namespace OnlineShop.Services
     {
         static List<ProductModel> productList = new List<ProductModel>();
 
-        public CarService()
-        {
-        }
-
+     
         public static List<ProductModel> GetProductList()
         {
             productList = CarRepository.GetProductListByUser(Guid.Parse(LoginState.CustomerID));

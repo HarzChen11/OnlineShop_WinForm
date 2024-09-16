@@ -39,19 +39,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-<<<<<<< HEAD
-            this.label1.Location = new System.Drawing.Point(12, 35);
+            this.label1.Location = new System.Drawing.Point(17, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "手機門號：";
-=======
-            this.label1.Location = new System.Drawing.Point(32, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "E-mail：";
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             // 
             // label2
             // 
@@ -79,17 +71,10 @@
             // 
             // button1
             // 
-<<<<<<< HEAD
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button1.Location = new System.Drawing.Point(107, 113);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 34);
-=======
-            this.button1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(107, 113);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             this.button1.TabIndex = 4;
             this.button1.Text = "登入";
             this.button1.UseVisualStyleBackColor = true;

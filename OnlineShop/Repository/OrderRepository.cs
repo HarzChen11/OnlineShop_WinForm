@@ -1,24 +1,17 @@
 ﻿using OnlineShop.Models;
 using OnlineShop.Models.Entities;
-<<<<<<< HEAD
 using OnlineShop.Services;
-=======
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-<<<<<<< HEAD
-=======
 using System.Windows.Forms;
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 
 namespace OnlineShop.Repository
 {
     internal class OrderRepository
     {
-<<<<<<< HEAD
         public static void CreatOrder(OrderModel orderModel)
         {
             DataBase data = new DataBase();
@@ -73,26 +66,10 @@ namespace OnlineShop.Repository
                 info.Order.PaymentStatus = "已付款";
             }
 
-            ChangePointStatus(CustomerID);
+            PointService.ChangePointStatus(CustomerID);
 
             data.SaveChanges();
         }
-
-        // 更改點數狀態
-        private static void ChangePointStatus(Guid CustomerID)
-        {
-            DataBase data = new DataBase();
-            var LockPoints = data.PointsSystem.Where(x => x.CustomerID == CustomerID && x.Status == "已鎖定").ToList();
-            foreach (var point in LockPoints)
-            {
-                point.Status = "已使用";
-                point.Used = false;
-                point.Point = -point.Point;
-            }
-            data.SaveChanges();
-        }
-
-
 
         // 取得使用者的已完成結帳的購物車資料
         public static List<BoughtOrderModel> GetBoughtListByUser(Guid CustomerId, string OrderNumber)
@@ -104,7 +81,7 @@ namespace OnlineShop.Repository
                 OrderNumber = x.OrderNumber,
                 InvoiceNo = x.InvoiceNo,
                 CreatTime = x.CreateTime.ToString(),
-                Discount = x.LockPoint.ToString(),
+                Discount = (int)(x.LockPoint ?? 0),
                 Details = x.OrderDetails.Select(y => new ProductModel
                 {
                     OrderDetailsID = y.OrderDetailsID,
@@ -127,12 +104,12 @@ namespace OnlineShop.Repository
                 OrderNumber = x.OrderNumber,
                 InvoiceNo = x.InvoiceNo,
                 CreatTime = x.CreateTime.ToString(),
-                Discount = x.LockPoint.ToString(),
+                Discount = (int)(x.LockPoint ?? 0),
                 Details = x.OrderDetails.Select(y => new ProductModel
                 {
                     name = y.Product.ProductName,
                     ProducId = y.Product.ProductID,
-                    OrderDetailsID = y.OrderDetailsID, 
+                    OrderDetailsID = y.OrderDetailsID,
                     count = y.ProductQuantity,
                     price = y.Price,
                     img = y.Product.ProductImg,
@@ -149,17 +126,18 @@ namespace OnlineShop.Repository
             {
                 OrderID = x.OrderID.ToString(),
                 OrderNumber = x.OrderNumber,
-                InvoiceNo= x.InvoiceNo,
+                InvoiceNo = x.InvoiceNo,
                 CreatTime = x.CreateTime.ToString(),
-                Discount = x.LockPoint.ToString(),
-                 Details = x.OrderDetails.Select(y => new ProductModel
-                 {
-                     name = y.Product.ProductName,
-                     count = y.ProductQuantity,
-                     price = y.Price*y.ProductQuantity,
-                     img = y.Product.ProductImg,
-                     
-                 }).ToList()
+                Discount = (int)(x.LockPoint ?? 0),
+                Details = x.OrderDetails.Select(y => new ProductModel
+                {
+                    OrderDetailsID = y.OrderDetailsID,
+                    name = y.Product.ProductName,
+                    count = y.ProductQuantity,
+                    price = y.Price * y.ProductQuantity,
+                    img = y.Product.ProductImg,
+
+                }).ToList()
 
             }).ToList();
             return boughtOrders;
@@ -178,11 +156,11 @@ namespace OnlineShop.Repository
         {
             DataBase data = new DataBase();
             var order = data.Order.Where(x => x.OrderID == OrderId).FirstOrDefault();
-            return (int)order.LockPoint;
-=======
-        public static void CreatOrder(string UserID,List<ProductModel> products)
+            return (int)(order.LockPoint ?? 0);
+        }
+        public static void CreatOrder(string UserID, List<ProductModel> products)
         {
-           
+
             DataBase data = new DataBase();
             Guid cusID = Guid.Parse(UserID);
             var addDetail = data.Order.FirstOrDefault(x => x.CustomerID == cusID);
@@ -193,7 +171,7 @@ namespace OnlineShop.Repository
                 detail.OrderID = addDetail.OrderID;
                 for (int i = 0; i < products.Count(); i++)
                 {
-                    detail.ProductID = products[i].Id;
+                    detail.ProductID = products[i].ProducId;
                     detail.ProductColor = "隨機";
                     detail.ProductSpec = "正常";
                     detail.ProductQuantity = products[i].count;
@@ -207,9 +185,6 @@ namespace OnlineShop.Repository
                     MessageBox.Show("結帳成功");
                 }
             }
-
-
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         }
     }
 }

@@ -36,6 +36,10 @@ namespace OnlineShop.Services
                 LogisticsService.ChangeStatus(LoginState.Name, LoginState.Phone, OrderModel.OrderId);
                 InvoiceService.CreateInvoice(LoginState.Phone, Discount);
                 InvoiceService.UpDateInvoice(OrderID);
+                List<BoughtOrderModel> boughtOrders = OrderService.GetBoughtListByUser(CustomerId,OrderID);
+                ProductService.ChangeQty(boughtOrders);
+                
+
             }
             else
             {

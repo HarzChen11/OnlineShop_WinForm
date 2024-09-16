@@ -19,19 +19,11 @@ namespace OnlineShop.Models.Entities
 
         [Column("Deliver")]
         [Required]
-<<<<<<< HEAD
         [StringLength(20)]
         public string Deliver1 { get; set; }
 
         [Required]
         [StringLength(10)]
-=======
-        [StringLength(10)]
-        public string Deliver1 { get; set; }
-
-        [Required]
-        [StringLength(5)]
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         public string Translation { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

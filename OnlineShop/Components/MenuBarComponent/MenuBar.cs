@@ -35,18 +35,11 @@ namespace OnlineShop.Components.MenuBarComponent
             InitializeComponent();
             EventHandlers.IsLogin += EventHandlers_IsLogin;
             EventHandlers.AddToCar += EventHandlers_AddToCar;
-<<<<<<< HEAD
             EventHandlers.randerPoint += EventHandlers_randerPoint;
-            this.ProductLabel.Text = CarService.GetTotal.ToString();
+            //this.ProductLabel.Text = CarService.GetTotal.ToString();
         }
 
 
-=======
-            this.label1.Text = CartService.getTotal.ToString();
-        }
-
-       
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 
         public static ShopCarForm shopCarForm;
         private void OpenCar(object sender, EventArgs e)
@@ -59,7 +52,7 @@ namespace OnlineShop.Components.MenuBarComponent
             shopCarForm.Show();
         }
 
-<<<<<<< HEAD
+
 
 
         private void EventHandlers_randerPoint(object sender, EventArgs e)
@@ -82,7 +75,7 @@ namespace OnlineShop.Components.MenuBarComponent
             button2.Text = e ? "登出" : "登入";
             ProductLabel.Visible = e;
             var list = CarService.GetProductList();
-            string total = list.Sum(x=>x.count).ToString();
+            string total = list.Sum(x => x.count).ToString();
             ProductLabel.Text = total;
             label2.Visible = e;
             label3.Visible = e;
@@ -92,61 +85,31 @@ namespace OnlineShop.Components.MenuBarComponent
             HistoryBT.Visible = e;
         }
 
-=======
-       
 
 
-        private void EventHandlers_AddToCar(object sender, int total)
-        {
-            //this.productList = productList;
-            label1.Text = total.ToString();
-        }
-
-
-
-        private void EventHandlers_IsLogin(object sender, bool e)
-        {
-            if (e == true)
-            {
-                button1.Visible = true;
-                button3.Visible = false;
-                button2.Text = "登出";
-                label1.Visible = true;
-                CartService service = new CartService();
-                label1.Text = CartService.getTotal.ToString();
-
-            }
-        }
-
-    
-
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         static Form regForm = null;
         private void Register_Click(object sender, EventArgs e)
         {
             if (regForm == null)
             {
                 regForm = new RegisterForm();
-<<<<<<< HEAD
-=======
+
                 regForm.Show();
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
+
             }
             else
             {
                 regForm = null;
             }
-<<<<<<< HEAD
+
             regForm.Show();
-=======
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
+
 
         }
 
         static Form LoginForm = null;
         private void OpenLogin(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             //bool check = EventHandlers.getLoginState();
             //if (check == true)
             //{
@@ -191,20 +154,5 @@ namespace OnlineShop.Components.MenuBarComponent
                 HistoryForm = null;
             }
         }
-=======
-            if (LoginForm == null)
-            {
-                LoginForm = new LoginForm();
-            }
-            else
-            {
-                LoginForm = null;
-            }
-            LoginForm.Show();
-        }
-
-       
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
     }
 }
-

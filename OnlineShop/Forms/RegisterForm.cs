@@ -1,10 +1,7 @@
 ﻿using OnlineShop.Models;
 using OnlineShop.Models.Entities;
-<<<<<<< HEAD
 using OnlineShop.Services;
 using OnlineShop.Utility;
-=======
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,16 +22,9 @@ namespace OnlineShop.Forms
 
         }
 
-<<<<<<< HEAD
 
         private void Register_Click(object sender, EventArgs e)
         {
-=======
-        Customer customer = new Customer();
-        private void Register_Click(object sender, EventArgs e)
-        {
-            DataBase data = new DataBase();
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
             if (string.IsNullOrWhiteSpace(NameText.Text) ||
                 string.IsNullOrWhiteSpace(PasswordText.Text) ||
                 string.IsNullOrWhiteSpace(PhoneTtext.Text) ||
@@ -43,7 +33,6 @@ namespace OnlineShop.Forms
                 string.IsNullOrWhiteSpace(MailText.Text))
             {
                 MessageBox.Show("請填上所有資料");
-<<<<<<< HEAD
                 return;
             }
 
@@ -57,20 +46,7 @@ namespace OnlineShop.Forms
             CheckNumberForm numberForm = new CheckNumberForm(result.Item1.CustomerID, result.Item2);
             numberForm.ShowDialog();
             this.Close();
-=======
-            }
-            else
-            {
-                customer.CustomerID = Guid.NewGuid();
-                customer.Name = NameText.Text;
-                customer.Password = PasswordText.Text;
-                customer.Phone = PhoneTtext.Text;
-                customer.Address = AddressText.Text;
-                customer.City = CityText.Text;
-                customer.Email = MailText.Text;
-                checkInfo(customer);
-                
-            }
+
         }
 
         private void checkInfo(Customer customer)
@@ -85,7 +61,7 @@ namespace OnlineShop.Forms
             else
             {
                 data.Customer.Add(customer);
-                
+
                 int res = data.SaveChanges();
                 if (res != 0)
                 {
@@ -101,9 +77,6 @@ namespace OnlineShop.Forms
                     MessageBox.Show("新增失敗");
                 }
             }
-
-
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
         }
     }
 }

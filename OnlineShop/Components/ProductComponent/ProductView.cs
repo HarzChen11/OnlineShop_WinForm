@@ -1,4 +1,5 @@
 ﻿using Microsoft.Web.WebView2.WinForms;
+using OnlineShop.Forms;
 using OnlineShop.Models;
 using OnlineShop.Models.Entities;
 using OnlineShop.Models.Enums;
@@ -21,7 +22,7 @@ namespace OnlineShop.Components.ProductComponent
     public partial class ProductView : UserControl
     {
 
-        Product product; 
+        Product product;
 
         public ProductView(Product product)
         {
@@ -39,22 +40,20 @@ namespace OnlineShop.Components.ProductComponent
             Font font = new Font("微軟正黑體", 10);
 
             Label Namelb = new Label();
-            Namelb.Font=font;
-            Namelb.Width = flowLayoutPanel2.Width; 
+            Namelb.Font = font;
+            Namelb.Width = flowLayoutPanel2.Width;
             Label pricelb = new Label();
             pricelb.Font = font;
             Namelb.Text = product.ProductName.Replace("Knirps 德國紅點傘 |", "").Replace("KnirpsR 德國紅點", "").Replace("Knirps德國紅點傘｜", "").Replace("KnirpsR德國紅點傘 |", "").Replace("KnirpsR德國紅點傘｜", "").Trim();
-            pricelb.Text = "價格:"+product.ProductPrice.ToString();
+            pricelb.Text = "價格:" + product.ProductPrice.ToString();
             flowLayoutPanel2.Controls.Add(Namelb);
             flowLayoutPanel2.Controls.Add(pricelb);
 
         }
 
-        
-        
+        public static FollowForm followForm;
         private void AddCar(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
             // 檢查登入狀態
             bool check = EventHandlers.getLoginState();
             if (check == false)
@@ -64,20 +63,24 @@ namespace OnlineShop.Components.ProductComponent
             else
             {
                 ProductModel model = new ProductModel();
-<<<<<<< HEAD
                 model.ProducId = product.ProductID;
-=======
-                model.Id = product.ProductID;
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
                 model.name = product.ProductName;
                 model.price = product.ProductPrice;
                 model.count = 1;
                 model.img = product.ProductImg;
-<<<<<<< HEAD
-                CarService.AddToCar(CartAction.Button ,model);
-=======
-                CartService.AddToCar(CartAction.Button ,model);
->>>>>>> 8101e26593e1c25fcacf35b07ec8373dd546f8f2
+                int Qty = ProductService.CheckQty(model);
+                if (Qty == 0)
+                {
+                    if (followForm == null || followForm.IsDisposed)
+                    {
+                        followForm = new FollowForm(model);
+                    }
+                    followForm.Show();
+                }
+                else
+                {
+                    CarService.AddToCar(CartAction.Button, model);
+                }
             }
         }
     }

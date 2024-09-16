@@ -71,6 +71,11 @@ namespace OnlineShop.Services
             PointRepository.DeductionPoint(OrderId, deduct);
         }
 
-      
+        public static void ChangePointStatus(Guid CustomerID)
+        {
+            PointRepository.ChangePointStatus(CustomerID);
+        }
+
+
     }
 }
