@@ -55,10 +55,6 @@ namespace OnlineShop.Services
             return LockPoint;
         }
 
-        //public static void ServiceCreatOrder()
-        //{
-        //    OrderRepository.CreatOrder(LoginState.CustomerID,CartService.getList());
-
-        //}
+     
     }
 }

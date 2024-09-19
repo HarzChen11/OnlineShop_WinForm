@@ -28,5 +28,7 @@ namespace OnlineShop.Repository
             return Qty;
 
         }
+
+       
     }
 }

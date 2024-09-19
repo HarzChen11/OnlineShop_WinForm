@@ -34,6 +34,8 @@ namespace OnlineShop
             var list = products.Take(6).ToList();
             creatProduct(list);
 
+            // 執行自動化偵測庫存
+            TaskService.StartCheckingAsync();
         }
 
 

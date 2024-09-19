@@ -698,6 +698,7 @@
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\ProductImg.cs" />
     <Compile Include="Models\Entities\ProductType.cs" />
+    <Compile Include="Models\Entities\Stock.cs" />
     <Compile Include="Models\Entities\sysdiagrams.cs" />
     <Compile Include="Models\Entities\Trolley.cs" />
     <Compile Include="Models\Entities\TrolleyDetails.cs" />
@@ -721,6 +722,7 @@
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Reponse\LogisticsResponse.cs" />
     <Compile Include="Models\Reponse\PrintInvoiceReponse.cs" />
+    <Compile Include="Models\StockModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CarRepository.cs" />
@@ -731,6 +733,7 @@
     <Compile Include="Repository\ProductRepostory.cs" />
     <Compile Include="Repository\RegisterRepository.cs" />
     <Compile Include="Repository\PointRepository.cs" />
+    <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Services\CarService.cs" />
     <Compile Include="Services\CheckOutService.cs" />
     <Compile Include="Services\FollowService.cs" />
@@ -743,6 +746,8 @@
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\RegisterService.cs" />
     <Compile Include="Services\ReturnService.cs" />
+    <Compile Include="Services\StockService.cs" />
+    <Compile Include="Services\TaskService.cs" />
     <Compile Include="Services\UniversalCryptoService.cs" />
     <Compile Include="Utility\AesHelper.cs" />
     <Compile Include="Utility\emailModel.cs" />

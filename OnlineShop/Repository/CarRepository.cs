@@ -129,9 +129,6 @@ namespace OnlineShop.Repository
             data.SaveChanges();
         }
 
-    
-
-
         public static List<ProductModel> GetProductListByUser(Guid CustomerId)
         {
             DataBase data = new DataBase();

@@ -1,4 +1,5 @@
 ﻿using OnlineShop.Models;
+using OnlineShop.Models.Entities;
 using OnlineShop.Repository;
 using System;
 using System.Collections.Generic;
@@ -26,5 +27,7 @@ namespace OnlineShop.Services
             int Qty = ProductRepostory.CheckQty(model);
             return Qty;
         }
+
+      
     }
 }
