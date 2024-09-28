@@ -28,6 +28,11 @@ namespace OnlineShop.Services
             return Qty;
         }
 
-      
+        public static List<StockModel> CheckStockQty()
+        {
+            List<StockModel> stocks = ProductRepostory.CheckStockQty();
+            return stocks;
+        }
+
     }
 }

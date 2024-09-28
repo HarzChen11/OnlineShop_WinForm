@@ -21,11 +21,11 @@ namespace OnlineShop.Models.Entities
         public virtual DbSet<PointsSystem> PointsSystem { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
+        public virtual DbSet<Stock> Stock { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Trolley> Trolley { get; set; }
         public virtual DbSet<TrolleyDetails> TrolleyDetails { get; set; }
         public virtual DbSet<ProductImg> ProductImg { get; set; }
-        public virtual DbSet<Stock> Stock { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

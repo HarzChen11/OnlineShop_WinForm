@@ -37,6 +37,7 @@ namespace OnlineShop.Services
             return url;
         }
 
+        // 發送逆物流請求到綠界
         public static void CreateReturn(ReturnModel returnModel, string value)
         {
             var ReturnData = new ReturnGoodData
@@ -44,7 +45,6 @@ namespace OnlineShop.Services
                 LogisticsID = returnModel.LogisticsID,
                 GoodsName = returnModel.GoodsName,
                 GoodsAmount = returnModel.Price,
-
             };
 
             string Data = UniversalCryptoService.Encrypt(ReturnData, Keys.Logistics);
@@ -55,5 +55,13 @@ namespace OnlineShop.Services
             ResponseData dataModel = JsonConvert.DeserializeObject<ResponseData>(DecodeResult);
             Console.WriteLine(dataModel.RtnOrderNo);
         }
+
+        // 處理退或發票("折讓>重開"或"作廢")
+        public static void ReturnInvoice(Guid OrderId, int price, List<ProductModel> ReturnProducs, string OrderNumber)
+        {
+            InvoiceService.CheckReturn(OrderId, price, ReturnProducs, OrderNumber);
+            OrderService.ChangeStatus(ReturnProducs);
+        }
+
     }
 }

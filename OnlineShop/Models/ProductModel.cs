@@ -19,5 +19,7 @@ namespace OnlineShop.Models
         public string OrderCreateday { get; set; }
         public int Discount { get; set; }
 
+        public string Status { get; set; }
+
     }
 }

@@ -55,6 +55,10 @@ namespace OnlineShop.Services
             return LockPoint;
         }
 
-     
+        // 商品退貨後更改OrderDetail的商品狀態
+        public static void ChangeStatus(List<ProductModel> ReturnProducs)
+        {
+            OrderRepository.ChangeStatus(ReturnProducs);
+        }
     }
 }

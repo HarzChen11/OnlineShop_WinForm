@@ -41,7 +41,8 @@ namespace StockControl
             foreach(var data in follows)
             {
                 string htmlTemplate = MailTemplates.FollowMail;
-                MailInfo(htmlTemplate, "驗證碼認證", data.Email);
+                htmlTemplate = htmlTemplate.Replace("{ProductName}", data.ProductName);
+                MailInfo(htmlTemplate, "商品補貨通知", data.Email);
             }
 
         }
@@ -99,7 +100,7 @@ namespace StockControl
     </div>
     <div class='content'>
         <p>親愛的顧客，您好：</p>
-        <p>很高興地通知您，您之前關注的商品已經到貨了！</p>
+        <p>很高興地通知您，您之前關注的商品{ProductName}已經到貨了！</p>
         <p> 數量有限，請盡快下單以免錯過這次機會！</p>
         <p> 如果您有任何問題或需要進一步的協助，請隨時與我們的客戶服務團隊聯繫。</p>
         <p> 感謝您的耐心等待和持續支持！</p>

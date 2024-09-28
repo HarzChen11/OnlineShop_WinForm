@@ -27,7 +27,7 @@ namespace OnlineShop.Models
             public string NotifyMail { get; set; }
             public int AllowanceAmount { get; set; }
             public AllowanceItem[] Items { get; set; }
-            public string ReturnURL { get; set; } = "http://localhost:5031/swagger/index.html";
+            public string ReturnURL { get; set; } = "http://localhost:5031/api/Logistic/Create";
 
             public class AllowanceItem
             {

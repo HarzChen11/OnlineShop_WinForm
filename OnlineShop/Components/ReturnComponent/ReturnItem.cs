@@ -24,6 +24,7 @@ namespace OnlineShop.Components.ReturnComponent
                 return checkBox1.Checked;
             }
         }
+
         public int Quantity
         {
             get { return (int)numericUpDown1.Value; }
@@ -34,12 +35,17 @@ namespace OnlineShop.Components.ReturnComponent
         {
             InitializeComponent();
             this.product = product;
-            
+            label1.Text = product.Status;
             checkBox1.Text = product.name;
             numericUpDown1.Minimum = 1;
             numericUpDown1.Maximum = product.count;
             numericUpDown1.ValueChanged += NumericUpDown1_ValueChanged;
-            //checkBox1.Tag = Quantity;
+            if (label1.Text == "已退貨")
+            {
+                checkBox1.Enabled = false;
+                checkBox1.ForeColor = Color.Red;
+                numericUpDown1.Enabled = false;
+            }
         }
 
         itemModel Model = new itemModel();

@@ -47,6 +47,7 @@ namespace OnlineShop.Repository
                 detail.ProductSpec = "正常";
                 detail.ProductQuantity = product.count;
                 detail.Price = product.price;
+                detail.Status = "正常";
                 data.OrderDetails.Add(detail);
             }
             data.SaveChanges();
@@ -80,6 +81,7 @@ namespace OnlineShop.Repository
                 OrderID = x.OrderID.ToString(),
                 OrderNumber = x.OrderNumber,
                 InvoiceNo = x.InvoiceNo,
+                //InvoiceStatus = x.InvoiceStatus,
                 CreatTime = x.CreateTime.ToString(),
                 Discount = (int)(x.LockPoint ?? 0),
                 Details = x.OrderDetails.Select(y => new ProductModel
@@ -113,6 +115,7 @@ namespace OnlineShop.Repository
                     count = y.ProductQuantity,
                     price = y.Price,
                     img = y.Product.ProductImg,
+                    Status = y.Status,
 
                 }).ToList()
             }).ToList();
@@ -185,6 +188,22 @@ namespace OnlineShop.Repository
                     MessageBox.Show("結帳成功");
                 }
             }
+        }
+
+        public static void ChangeStatus(List<ProductModel> ReturnProducs)
+        {
+            DataBase data = new DataBase();
+            var products = data.OrderDetails.Select(x => x.ProductID).ToList();
+            foreach (var item in ReturnProducs)
+            {
+                if (products.Contains(item.ProducId))
+                {
+                    var product = data.OrderDetails.FirstOrDefault(x => x.ProductID == item.ProducId);
+                    product.Status = "已退貨";
+                }
+
+            }
+            data.SaveChanges();
         }
     }
 }

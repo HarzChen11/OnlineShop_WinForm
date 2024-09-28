@@ -45,8 +45,9 @@ namespace OnlineShop.Services
             foreach (var points in pointList)
             {
                 DateTime Expiredday;
-                DateTime.TryParseExact(points.ExpireDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out Expiredday);
-                if (Expiredday.AddDays(-30) < date)
+                bool isValidDate = DateTime.TryParseExact(points.ExpireDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out Expiredday);
+
+                if (isValidDate && Expiredday.AddDays(-30) < date)
                 {
                     ExpiredTotal += points.Point;
                 }

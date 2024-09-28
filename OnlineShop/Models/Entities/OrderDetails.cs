@@ -32,6 +32,9 @@ namespace OnlineShop.Models.Entities
 
         public int Price { get; set; }
 
+        [StringLength(20)]
+        public string Status { get; set; }
+
         public virtual Order Order { get; set; }
 
         public virtual Product Product { get; set; }

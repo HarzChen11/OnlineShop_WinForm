@@ -10,56 +10,43 @@ namespace OnlineShop.Repository
 {
     internal class StockRepository
     {
-        public static List<StockModel> GetStock()
+        //撈已存在stock db資料的
+        public static List<StockModel> GetStockList()
         {
             DataBase data = new DataBase();
-            var datas = data.Stock
-           .Join(data.Product,
-               stock => stock.ProductID,
-               product => product.ProductID,
-               (stock, product) => new
-               {
-                   ProductID = stock.ProductID,
-                   ProductName = product.ProductName,
-                   ProductQuantity = stock.ProductQuantity,
-                   ProductSafeQuantity = stock.ProductSafeQuantity,
-               })
-           .ToList();
-            List<StockModel> stockModels = new List<StockModel>();
-            foreach (var stock in datas)
+            List<StockModel> stocks = data.Stock.Select(x => new StockModel
             {
-                StockModel stockModel = new StockModel();
-                stockModel.ProductName = stock.ProductName;
-                stockModel.ProductID = stock.ProductID;
-                stockModel.ProductQuantity = stock.ProductQuantity;
-                stockModel.ProductSafeQuantity = stock.ProductSafeQuantity;
-                stockModels.Add(stockModel);
-            }
+                StockID = x.StockID,
+                ProductID = x.ProductID,
+                ProductQuantity = x.ProductQuantity,
+                ProductSafeQuantity = x.ProductSafeQuantity
+            }).ToList();
 
-            return stockModels;
+            return stocks;
         }
 
-        public static StockModel CheckStock()
+        public static List<StockModel> CheckStock()
         {
             DataBase data = new DataBase();
-            StockModel stock = data.Product.Where(x => x.ProductQuantity < x.ProductSafeQuantity).Select(x => new StockModel
+            List<StockModel> stockList = data.Product.Where(x => x.ProductQuantity < x.ProductSafeQuantity).Select(x => new StockModel
             {
                 ProductID = x.ProductID,
                 ProductName = x.ProductName,
                 ProductQuantity = x.ProductQuantity,
                 ProductSafeQuantity = x.ProductSafeQuantity,
-            }).FirstOrDefault();
-            return stock;
+            }).ToList();
+            return stockList;
         }
 
-        public static void CreatStock(StockModel stockModel)
+        public static void CreatStock(StockModel ProductStocks)
         {
             DataBase data = new DataBase();
             Stock stock = new Stock();
             stock.StockID = Guid.NewGuid();
-            stock.ProductID = stockModel.ProductID;
-            stock.ProductQuantity = stockModel.ProductQuantity;
-            stock.ProductSafeQuantity = stockModel.ProductSafeQuantity;
+            stock.ProductID = ProductStocks.ProductID;
+            stock.ProductQuantity = ProductStocks.ProductQuantity;
+            stock.ProductSafeQuantity = ProductStocks.ProductSafeQuantity;
+            stock.Status = "未叫貨";
             data.Stock.Add(stock);
             data.SaveChanges();
         }

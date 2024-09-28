@@ -3,6 +3,7 @@ using OnlineShop.Components.ReturnComponent;
 using OnlineShop.Models;
 using OnlineShop.Models.Enums;
 using OnlineShop.Services;
+using OnlineShop.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,11 +21,13 @@ namespace OnlineShop.Forms
     {
         List<BoughtOrderModel> list;
         string orderId;
+        string OrderNumber;
 
         public ReturnForm(string OrderId, string OrderNumber)
         {
             InitializeComponent();
             this.orderId = OrderId;
+            this.OrderNumber = OrderNumber;
             label3.Text = OrderNumber;
             list = OrderService.GetBoughtListByUser(Guid.Parse(LoginState.CustomerID), Guid.Parse(orderId));
 
@@ -54,10 +57,21 @@ namespace OnlineShop.Forms
         private void ReturnItem_Checked(object sender, itemModel model)
         {
             ReturnItem item = sender as ReturnItem;
+
+
+            bool a = Product.Contains(model);
             if (item.SelectedItem)
             {
-                ReturnProduc.Add(model.product);
-                Product.Add(model);
+                if (a == false)
+                {
+                    ReturnProduc.Add(model.product);
+                    Product.Add(model);
+                }
+                else
+                {
+                    var pro = Product.Where(x => x.product.ProducId == model.product.ProducId).FirstOrDefault();
+                    pro.Qty = model.Qty;
+                }
             }
             else
             {
@@ -71,10 +85,12 @@ namespace OnlineShop.Forms
         {
 
             label8.Text = OrderService.FindLockPoint(Guid.Parse(orderId)).ToString();
+
             label6.Text = CalculateTotalPrice(Product).ToString();
             label2.Text = Math.Floor(decimal.Parse(label6.Text) / 30).ToString();
 
         }
+
 
 
         private int CalculateTotalPrice(List<itemModel> Product)
@@ -107,10 +123,14 @@ namespace OnlineShop.Forms
             ReturnService.CreateReturn(returnModel, url);
 
             // 發票折讓
-            InvoiceService.CreatAllowance(Guid.Parse(orderId), int.Parse(label6.Text), ReturnProduc);
+            ReturnService.ReturnInvoice(Guid.Parse(orderId), int.Parse(label6.Text), ReturnProduc, OrderNumber);
+            //InvoiceService.CreatAllowance(Guid.Parse(orderId), int.Parse(label6.Text), ReturnProduc, OrderNumber);
 
+            // 退貨扣除點數
             PointService.DeductionPoint(Guid.Parse(orderId), int.Parse(label2.Text));
             EventHandlers.RanderPoint();
         }
+
+     
     }
 }

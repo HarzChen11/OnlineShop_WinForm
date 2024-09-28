@@ -47,6 +47,9 @@ namespace OnlineShop.Models.Entities
         [StringLength(20)]
         public string InvoiceDate { get; set; }
 
+        [StringLength(20)]
+        public string InvoiceStatus { get; set; }
+
         public virtual Deliver Deliver1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

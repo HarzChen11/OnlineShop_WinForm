@@ -29,7 +29,7 @@ namespace OnlineShop.Utility
                 return (default(A), response.Content);
             }
             a = jsonConvert<A>(response.Content);
-            return (a,null);
+            return (a, null);
             #region
             //HttpClient httpClient = new HttpClient();
             //string apiUrl = "https://einvoice-stage.ecpay.com.tw/B2CInvoice/Issue";

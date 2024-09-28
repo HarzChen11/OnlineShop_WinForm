@@ -8,13 +8,13 @@ using System.Web;
 
 namespace OnlineShop.Utility
 {
-    internal class UrlHelper
+    public class UrlHelper
     {
         public static string UrlEncode<T>(T t)
         {
             string UrlResult = JsonConvert.SerializeObject(t, Formatting.Indented);
             UrlResult = HttpUtility.UrlEncode(UrlResult);
-
+            
             return UrlResult;
         }
 

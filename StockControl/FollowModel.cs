@@ -9,6 +9,7 @@ namespace StockControl
     public class FollowModel
     {
         public string Email { get; set; }
+        public string ProductName { get; set; }
         public List<FollowData> Data { get; set; }
 
         public FollowModel()

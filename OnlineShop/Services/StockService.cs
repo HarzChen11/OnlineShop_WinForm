@@ -10,21 +10,27 @@ namespace OnlineShop.Services
 {
     internal class StockService
     {
-        public static List<StockModel> GetStock()
-        {
-            List<StockModel> stockModels = StockRepository.GetStock();
-            return stockModels;
-        }
+        //public static List<StockModel> GetStockList()
+        //{
+        //    List<StockModel> stockModels = StockRepository.GetStockList();
+        //    return stockModels;
+        //}
 
-        public static StockModel CheckStock()
+        public static List<StockModel> CreatStock(List<StockModel> ProductStocks)
         {
-            StockModel stock = StockRepository.CheckStock();
-            return stock;
-        }
+            List<StockModel> stockModels = StockRepository.GetStockList();
 
-        public static void CreatStock(StockModel stock)
-        {
-            StockRepository.CreatStock(stock);
+            var ProductIds = stockModels.Select(x => x.ProductID).ToHashSet();
+            List<StockModel> extraItems = ProductStocks.Where(x => !ProductIds.Contains(x.ProductID)).ToList();
+
+            if (extraItems != null)
+            {
+                foreach (var item in extraItems)
+                {
+                    StockRepository.CreatStock(item);
+                }
+            }
+            return extraItems;
         }
     }
 }

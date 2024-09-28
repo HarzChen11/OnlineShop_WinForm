@@ -9,22 +9,15 @@ namespace OnlineShop.Models.Entities
     [Table("Stock")]
     public partial class Stock
     {
-        [Key]
-        [Column(Order = 0)]
         public Guid StockID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         public Guid ProductID { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProductQuantity { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProductSafeQuantity { get; set; }
+
+        [StringLength(20)]
+        public string Status { get; set; }
     }
 }

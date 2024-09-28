@@ -74,8 +74,8 @@ namespace OnlineShop.Utility
 
         public static void SendNumberMail(string CustomerMail, string password)
         {
-            string htmlTemplate = MailTemplates.pickUpMail;
-            htmlTemplate = htmlTemplate.Replace("{OrderId}", password);
+            string htmlTemplate = MailTemplates.NumberMail;
+            htmlTemplate = htmlTemplate.Replace("{verificationCode}", password);
 
             MailInfo(htmlTemplate, "驗證碼認證", CustomerMail);
         }

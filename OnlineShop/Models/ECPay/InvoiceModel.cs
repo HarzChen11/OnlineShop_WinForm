@@ -12,7 +12,7 @@ namespace OnlineShop.Models
 
         public string MerchantID { get; set; } = "2000132";
         public Rqheader RqHeader { get; set; } = new Rqheader();
-        public string Data { get; set; } 
+        public string Data { get; set; }
 
         public class Rqheader
         {
@@ -48,10 +48,5 @@ namespace OnlineShop.Models
             public string ItemTaxType { get; set; }
             public int ItemAmount { get; set; }
         }
-
-
-
-
-
-}
+    }
 }

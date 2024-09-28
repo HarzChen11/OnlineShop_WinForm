@@ -4,29 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Models.ReponseModel
+namespace OnlineShop.Models.Reponse
 {
-    internal class LogisticsResponse
+    internal class ReIssueReponse
     {
         public string MerchantID { get; set; }
-        public Rpheader RpHeader { get; set; } 
+        public Rpheader RpHeader { get; set; }
         public int TransCode { get; set; }
         public string TransMsg { get; set; }
         public string Data { get; set; }
 
         public class Rpheader
         {
-            public string Timestamp { get; set; } 
-
-         
+            public int Timestamp { get; set; }
         }
 
-        public class LogisticsResponseData
+        public class ReIssueReponseData
         {
-            public string RtnCode { get; set; }
+            public int RtnCode { get; set; }
             public string RtnMsg { get; set; }
-
-            public string LogisticsID { get; set; }
+            public string InvoiceNo { get; set; }
+            public string InvoiceDate { get; set; }
+            public string RandomNumber { get; set; }
         }
 
     }

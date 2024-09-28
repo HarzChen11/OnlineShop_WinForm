@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using static OnlineShop.Models.FinalLogisticsModel;
 using static OnlineShop.Models.TempLogisticsModel;
 using static OnlineShop.Models.ReponseModel.LogisticsResponse;
+using System.Text.RegularExpressions;
 
 namespace OnlineShop.Services
 {
@@ -24,13 +25,13 @@ namespace OnlineShop.Services
 
             var logisticsData = new TempLogisticsDataModel
             {
-                TempLogisticsID = "0",
-                GoodsAmount = orderModel.Total,
-                ReceiverAddress = orderModel.Address,
-                ReceiverCellPhone = orderModel.Phone,
-                ReceiverName = orderModel.Name,
-                EshopMemberID = (LoginState.CustomerID.ToString().Replace("-", "").Substring(0, 24)),
-            };
+                TempLogisticsID ="0",
+                GoodsAmount =orderModel.Total,
+                ReceiverAddress =orderModel.Address,
+                ReceiverCellPhone =orderModel.Phone,
+                ReceiverName =orderModel.Name,
+                EshopMemberID = new string(LoginState.CustomerID.ToString().Replace("-", "").Substring(0, 24).OrderBy(c => char.IsDigit(c)).ThenBy(c => c).ToArray())
+        };
 
             string EncryptResult = UniversalCryptoService.Encrypt(logisticsData, Keys.Logistics);
             logisticsModel = new TempLogisticsModel();
@@ -38,6 +39,8 @@ namespace OnlineShop.Services
             var result = HttpRequests.PostRequest<LogisticsResponse>("https://logistics-stage.ecpay.com.tw/Express/v2/RedirectToLogisticsSelection", logisticsModel, false);
             return result.Item2;
         }
+
+   
 
         // 建立正式物流訂單
         public static void SendFinalLogistics(string Name, string phone)

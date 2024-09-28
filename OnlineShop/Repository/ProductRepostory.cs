@@ -29,6 +29,18 @@ namespace OnlineShop.Repository
 
         }
 
-       
+        // 撈product db中庫存<水位的
+        public static List<StockModel> CheckStockQty()
+        {
+            DataBase data = new DataBase();
+            List<StockModel> stocks = data.Product.Where(x => x.ProductQuantity < x.ProductSafeQuantity).Select(x => new StockModel
+            {
+                ProductID = x.ProductID,
+                ProductName = x.ProductName,
+                ProductQuantity = x.ProductQuantity,
+                ProductSafeQuantity = x.ProductSafeQuantity,
+            }).ToList();
+            return stocks;
+        }
     }
 }

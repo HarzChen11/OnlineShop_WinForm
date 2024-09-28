@@ -34,7 +34,8 @@ namespace OnlineShop.Services
         public static string Encrypt<T>(T model, Keys keys)
         {
             var KeysResult = KeyOption(keys);
-            string EncodedData = UrlHelper.UrlEncode(model);
+            string EncodedData = UrlHelper.UrlEncode(model).Replace("+", "%20");
+
             string AesKey = KeysResult["AesKey"];
             string AesIv = KeysResult["AesIv"];
 

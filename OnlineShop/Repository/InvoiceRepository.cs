@@ -17,21 +17,24 @@ namespace OnlineShop.Repository
             var order = data.Order.Where(x => x.OrderID == Orderid && x.PaymentStatus == "已付款").FirstOrDefault();
             order.InvoiceNo = dataModel.InvoiceNo;
             order.InvoiceDate = dataModel.InvoiceDate;
+            order.InvoiceStatus = "首開發票";
             data.SaveChanges();
 
         }
 
-        
+
         public static AllowanceData GetInvoiceFromUser(Guid Orderid)
         {
             DataBase data = new DataBase();
-            var allowanceData = data.Order.Where(x => x.OrderID == Orderid && x.PaymentStatus == "已付款").Select(x => new AllowanceData
-            {
-                InvoiceNo = x.InvoiceNo,
-                InvoiceDate = x.InvoiceDate,
-            }).FirstOrDefault();
+            var order = data.Order.Where(x => x.OrderID == Orderid && x.PaymentStatus == "已付款").FirstOrDefault();
 
+            var allowanceData = new AllowanceData
+            {
+                InvoiceNo = order.InvoiceNo,
+                InvoiceDate = DateTime.Parse(order.InvoiceDate).ToString("yyyy-MM-dd")
+            };
             return allowanceData;
+
         }
 
         public static void CreatReIssueData()

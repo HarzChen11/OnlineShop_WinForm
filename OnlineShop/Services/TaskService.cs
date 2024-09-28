@@ -1,4 +1,6 @@
-﻿using OnlineShop.Models;
+﻿using Newtonsoft.Json;
+using OnlineShop.Models;
+using OnlineShop.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,33 +10,34 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Services
 {
-    internal static class TaskService
+    internal class TaskService
     {
-       
-        static bool productExists;
         public static async Task StartCheckingAsync()
         {
+
             Task checkStock = new Task(() =>
             {
                 while (true)
                 {
-                    List<StockModel> stockModels = StockService.GetStock();
+                    RabbitMQService.CreatConnection();
+
                     //Thread.Sleep(300000);
                     Thread.Sleep(10000);
                     DateTime dateTime = DateTime.Now;
 
-                    StockModel products = StockService.CheckStock();
-
-                    bool productExists = stockModels.Any(x => x.ProductID == products.ProductID);
-                    
-                    if (!productExists)
+                    // 從ProductDB中撈出庫存<水位的
+                    List<StockModel> stockModel = ProductService.CheckStockQty();
+                    List<StockModel> extraItems = StockService.CreatStock(stockModel);
+                    if (extraItems.Count != 0)
                     {
-                        StockService.CreatStock(products);
+                        string EncodeStock = JsonConvert.SerializeObject(extraItems);
+                        RabbitMQService.creat(RabbitMQService.channel, EncodeStock);
                     }
                 }
             });
             checkStock.Start();
         }
+
 
     }
 }
